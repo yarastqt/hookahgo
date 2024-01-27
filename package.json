@@ -8,6 +8,7 @@
     "start": "vite"
   },
   "dependencies": {
+    "@react-aria/interactions": "3.20.1",
     "atomic-router": "0.9.5",
     "atomic-router-react": "0.9.1",
     "effector": "23.1.0",
