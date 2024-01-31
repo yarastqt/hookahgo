@@ -24,8 +24,8 @@ export const RoomScreen: FC = () => {
     <Canvas>
       <Title />
 
-      <Button>Да</Button>
-      <Button onHoverStart={onHoverStart}>Нет</Button>
+      <Button>👋 Да</Button>
+      <Button onHoverStart={onHoverStart}>🦧 Нет</Button>
     </Canvas>
   )
 }

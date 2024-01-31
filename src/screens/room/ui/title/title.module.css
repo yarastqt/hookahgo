@@ -1,4 +1,10 @@
 .root {
   font-size: 56px;
   font-family: Arial;
+  color: var(--color-text-primary);
+  font: var(--typography-heading-xl);
+}
+
+.highlight {
+  color: var(--color-accent);
 }
