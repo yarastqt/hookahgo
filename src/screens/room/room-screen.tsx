@@ -24,8 +24,10 @@ export const RoomScreen: FC = () => {
     <Canvas>
       <Title />
 
-      <Button>👋 Да</Button>
-      <Button onHoverStart={onHoverStart}>🦧 Нет</Button>
+      <Button excludeFromTabOrder>👋 Да</Button>
+      <Button excludeFromTabOrder onHoverStart={onHoverStart}>
+        🦧 Нет
+      </Button>
     </Canvas>
   )
 }

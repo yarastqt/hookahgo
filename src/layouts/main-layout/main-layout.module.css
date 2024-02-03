@@ -1,0 +1,10 @@
+.root {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+}
+
+.header {
+  padding: 24px;
+}
