@@ -1,5 +1,7 @@
 import { FieldValue } from 'firebase/firestore'
 
+export type RoomId = string
+
 export enum RoomStatus {
   Pending = 'pending',
   Accepted = 'accepted',
