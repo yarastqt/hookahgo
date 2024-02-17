@@ -1,9 +1,13 @@
 import { createHistoryRouter, createRoute } from 'atomic-router'
 import { createBrowserHistory } from 'history'
 
+export interface RoomRouteParams {
+  roomId: string
+}
+
 export const routes = {
   main: createRoute<any>(),
-  room: createRoute<{ roomId: string }>(),
+  room: createRoute<RoomRouteParams>(),
 }
 
 export const router = createHistoryRouter({

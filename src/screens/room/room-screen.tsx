@@ -1,10 +1,18 @@
-import { Button } from '@app/shared/ui'
-import { HoverEvent } from '@react-aria/interactions'
 import { FC } from 'react'
+import { useUnit } from 'effector-react'
+
+import { HoverEvent } from '@react-aria/interactions'
+import { Button } from '@app/shared/ui'
+
 import { Title } from './ui/title'
 import { Canvas } from './ui/canvas'
+import { roomScreenModel } from './model'
 
 export const RoomScreen: FC = () => {
+  const { room } = useUnit({ room: roomScreenModel.$room })
+
+  console.log('>>> room?.status', room?.status)
+
   const onHoverStart = (event: HoverEvent) => {
     const rect = event.target.getBoundingClientRect()
 
