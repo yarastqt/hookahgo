@@ -9,9 +9,13 @@ import { Canvas } from './ui/canvas'
 import { roomScreenModel } from './model'
 
 export const RoomScreen: FC = () => {
-  const { room } = useUnit({ room: roomScreenModel.$room })
+  const { onAccceptPress, onRejectPress, room } = useUnit({
+    onAccceptPress: roomScreenModel.acceptPressed,
+    onRejectPress: roomScreenModel.rejectPressed,
+    room: roomScreenModel.$room,
+  })
 
-  console.log('>>> room?.status', room?.status)
+  console.log('>>> room?.status', room)
 
   const onHoverStart = (event: HoverEvent) => {
     const rect = event.target.getBoundingClientRect()
@@ -32,8 +36,10 @@ export const RoomScreen: FC = () => {
     <Canvas>
       <Title />
 
-      <Button excludeFromTabOrder>👋 Да</Button>
-      <Button excludeFromTabOrder onHoverStart={onHoverStart}>
+      <Button excludeFromTabOrder onPress={onAccceptPress}>
+        👋 Да
+      </Button>
+      <Button excludeFromTabOrder onHoverStart={onHoverStart} onPress={onRejectPress}>
         🦧 Нет
       </Button>
     </Canvas>

@@ -5,10 +5,10 @@ import { scope } from '@app/shared/config'
 import { firebaseModel } from '@app/shared/firebase'
 
 import { Table } from './tables'
-import { type Room, type RoomDocument } from './types'
+import { type RoomId, type Room, type RoomDocument } from './types'
 
 export function subscribeToRoom(payload: {
-  params: { roomId: string }
+  params: { roomId: RoomId }
   onData: (room: Room) => void
 }) {
   const firestore = scope.getState(firebaseModel.$firestore)
@@ -20,6 +20,6 @@ export function subscribeToRoom(payload: {
   return onSnapshot(roomRef, (roomDocument) => {
     const room = roomDocument.data() as RoomDocument
 
-    payload.onData(room)
+    payload.onData({ ...room, id: roomRef.id })
   })
 }

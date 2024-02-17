@@ -19,6 +19,7 @@ export interface RoomDocument {
 }
 
 export interface Room {
+  id: RoomId
   createdAt: unknown
   status: RoomStatus
 }
