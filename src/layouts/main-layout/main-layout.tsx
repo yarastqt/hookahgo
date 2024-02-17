@@ -1,5 +1,8 @@
 import { FC, ReactNode } from 'react'
+import { Link } from 'atomic-router-react'
+
 import { Logo } from '@app/shared/ui'
+import { routes } from '@app/shared/router'
 
 import styles from './main-layout.module.css'
 
@@ -13,7 +16,9 @@ export const MainLayout: FC<MainLayoutProps> = (props) => {
   return (
     <div className={styles.root}>
       <div className={styles.header}>
-        <Logo />
+        <Link to={routes.main}>
+          <Logo />
+        </Link>
       </div>
       {children}
     </div>
