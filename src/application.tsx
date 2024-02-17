@@ -10,8 +10,8 @@ import { appStarted, scope } from '@app/shared/config'
 import '@app/shared/firebase'
 
 async function render() {
-  await allSettled(appStarted, { scope: scope })
-  await allSettled(router.setHistory, { scope: scope, params: history })
+  allSettled(appStarted, { scope: scope })
+  allSettled(router.setHistory, { scope: scope, params: history })
 
   createRoot(document.getElementById('root')!).render(
     <Provider value={scope}>
