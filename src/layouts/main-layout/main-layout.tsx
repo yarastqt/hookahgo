@@ -15,11 +15,9 @@ export const MainLayout: FC<MainLayoutProps> = (props) => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.header}>
-        <Link to={routes.main}>
-          <Logo />
-        </Link>
-      </div>
+      <Link to={routes.main} className={styles.logo}>
+        <Logo />
+      </Link>
 
       {children}
 

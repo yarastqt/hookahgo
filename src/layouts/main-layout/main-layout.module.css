@@ -2,9 +2,13 @@
   display: grid;
   height: 100vh;
   grid-template-rows: auto 1fr;
-  overflow: hidden;
+  padding: 64px;
+  box-sizing: border-box;
+  max-width: 80vw;
+  margin: 0 auto;
 }
 
-.header {
-  padding: 24px;
+.logo {
+  position: relative;
+  z-index: 1;
 }
