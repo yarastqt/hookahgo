@@ -36,10 +36,15 @@ export const RoomScreen: FC = () => {
     <Canvas>
       <Title />
 
-      <Button excludeFromTabOrder onPress={onAccceptPress}>
+      <Button excludeFromTabOrder onPress={onAccceptPress} variant="default">
         👋 Да
       </Button>
-      <Button excludeFromTabOrder onHoverStart={onHoverStart} onPress={onRejectPress}>
+      <Button
+        excludeFromTabOrder
+        onHoverStart={onHoverStart}
+        onPress={onRejectPress}
+        variant="default"
+      >
         🦧 Нет
       </Button>
     </Canvas>
