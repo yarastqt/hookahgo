@@ -1,8 +1,13 @@
 [data-color-scheme="dark"] {
   --color-surface-elevated-0: rgba(14, 16, 15, 1);
   --color-text-primary: rgba(255, 252, 225, 1);
+  --color-text-secondary: rgba(124, 124, 111, 1);
   --color-brand-text-on: rgba(14, 16, 15, 1);
   --color-brand-bg-base: rgba(255, 252, 225, 1);
+
+  --color-accent-border: rgba(132, 255, 203, 1);
+  --color-text-accent: rgba(132, 255, 203, 1);
+
   /* --color-brand-bg-hovered: rgba(237, 237, 242, 1);
   --color-brand-bg-pressed: rgba(225, 225, 229, 1); */
   --color-accent: rgba(132, 255, 203, 1);
