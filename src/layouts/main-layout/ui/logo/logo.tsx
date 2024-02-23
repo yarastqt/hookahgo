@@ -18,7 +18,6 @@ export const Logo: FC = () => {
         duration: 0.5,
         ease: 'expoScale(0.5, 7, none)',
         opacity: 0,
-        y: -24,
       })
     },
     { scope: ref },
