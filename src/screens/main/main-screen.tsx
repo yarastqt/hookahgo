@@ -1,43 +1,105 @@
 import cx from 'clsx'
-import { FC } from 'react'
+import { FC, useRef } from 'react'
 import { useUnit } from 'effector-react'
+import gsap from 'gsap'
 
+import { useGSAP } from '@gsap/react'
 import { Button } from '@app/shared/ui'
 import Shape1Image from '@app/shared/assets/shape-1.png'
 import Shape2Image from '@app/shared/assets/shape-2.png'
 
 import { mainScreenModel } from './model'
 import styles from './main-screen.module.css'
+import { BracketBackward, BracketForward } from '@app/shared/icons'
 
 export const MainScreen: FC = () => {
+  const ref = useRef<HTMLDivElement>(null)
+  const shapeTopRef = useRef<HTMLImageElement>(null)
+  const shapeBottomRef = useRef<HTMLImageElement>(null)
+  const firstLineRef = useRef<HTMLDivElement>(null)
+  const secondLineRef = useRef<HTMLDivElement>(null)
+  const highlightsRef = useRef<HTMLDivElement>(null)
+  const actionRef = useRef<HTMLButtonElement>(null)
+
   const { createdRoomId, isRoomCreating, onCreateRoomPress } = useUnit({
     createdRoomId: mainScreenModel.$createdRoomId,
     isRoomCreating: mainScreenModel.$isRoomCreating,
     onCreateRoomPress: mainScreenModel.createRoomPressed,
   })
 
+  useGSAP(
+    () => {
+      const timeline = gsap.timeline({
+        delay: 1,
+        repeatDelay: 1,
+        defaults: {
+          duration: 0.5,
+          ease: 'expoScale(0.5, 7, none)',
+        },
+      })
+
+      timeline.from(firstLineRef.current, { opacity: 0, y: -24 })
+
+      timeline.from(secondLineRef.current, { opacity: 0, y: 24 })
+
+      timeline.from(highlightsRef.current, { opacity: 0 })
+
+      timeline.add([
+        gsap.from(shapeTopRef.current, { opacity: 0, scale: 0 }),
+        gsap.from(shapeBottomRef.current, { opacity: 0, rotate: 90, scale: 0 }),
+
+        gsap.to(shapeTopRef.current, { delay: 0.5, duration: 1, repeat: -1, y: 8, yoyo: true }),
+        gsap.to(shapeBottomRef.current, { duration: 1, repeat: -1, y: 8, yoyo: true }),
+      ])
+
+      timeline.from(actionRef.current, { opacity: 0 })
+    },
+    { scope: ref },
+  )
+
   return (
-    <div className={styles.root}>
+    <div className={styles.root} ref={ref}>
       <div className={styles.content}>
         <div className={styles.heading}>
-          <img src={Shape1Image} className={cx(styles.image, styles.image_position_top)} />
+          <img
+            className={cx(styles.image, styles.image_position_top)}
+            ref={shapeTopRef}
+            src={Shape1Image}
+          />
 
-          <div className={styles.title}>Пригласи своего бро</div>
+          <div className={styles.title} ref={firstLineRef}>
+            Пригласи своего бро
+          </div>
 
           <div className={styles.secondline}>
-            <div className={styles.highlights}>
-              <div className={styles.highlight}>Незабываемая атмосфера</div>
-              <div className={styles.highlight}>Увликательные разгворы</div>
-              <div className={styles.highlight}>Бесценные идеи стартапов</div>
+            <div className={styles.highlights} ref={highlightsRef}>
+              <BracketBackward />
+              <div className={styles.highlightsList}>
+                <div className={styles.highlight}>Незабываемая атмосфера</div>
+                <div className={styles.highlight}>Увлекательные разговоры</div>
+                <div className={styles.highlight}>Бесценные идеи стартапов</div>
+              </div>
+              <BracketForward />
             </div>
 
-            <div className={styles.title}>в кальянную</div>
+            <div className={styles.title} ref={secondLineRef}>
+              в кальянную
+            </div>
 
-            <img src={Shape2Image} className={cx(styles.image, styles.image_position_bottom)} />
+            <img
+              className={cx(styles.image, styles.image_position_bottom)}
+              ref={shapeBottomRef}
+              src={Shape2Image}
+            />
           </div>
         </div>
 
-        <Button className={styles.action} onPress={onCreateRoomPress} variant="action">
+        <Button
+          className={styles.action}
+          onPress={onCreateRoomPress}
+          ref={actionRef}
+          variant="action"
+        >
           {isRoomCreating ? 'Создаем ссылку...' : 'Пригласить'}
         </Button>
       </div>

@@ -49,17 +49,25 @@
 
 .highlights {
   display: flex;
+  gap: 8px;
+  z-index: 1;
+  position: relative;
+  align-items: center;
+}
+
+.highlightsList {
+  display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
 .highlight {
-  color: var(--color-text-primary);
-  z-index: 1;
-  position: relative;
+  color: var(--color-text-secondary);
+
   font: var(--typography-heading-l);
 }
 
 .action {
   z-index: 1;
+  width: 256px;
 }
