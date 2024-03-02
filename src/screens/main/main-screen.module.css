@@ -13,19 +13,22 @@
 
 .heading {
   position: relative;
+
   pointer-events: none;
 }
 
 .image {
-  z-index: 1;
   position: absolute;
+  z-index: 1;
+
   width: 256px;
   height: 256px;
 }
 
 .image_position_top {
-  left: -128px;
   top: -128px;
+  left: -128px;
+
   opacity: 0.75;
 }
 
@@ -35,10 +38,12 @@
 }
 
 .title {
-  font: var(--typography-display-m);
-  color: var(--color-text-primary);
-  z-index: 1;
   position: relative;
+  z-index: 1;
+
+  font: var(--typography-display-m);
+
+  color: var(--color-text-primary);
 }
 
 .secondline {
@@ -48,11 +53,12 @@
 }
 
 .highlights {
-  display: flex;
-  gap: 8px;
-  z-index: 1;
   position: relative;
+  z-index: 1;
+
+  display: flex;
   align-items: center;
+  gap: 8px;
 }
 
 .highlightsList {
@@ -62,12 +68,13 @@
 }
 
 .highlight {
-  color: var(--color-text-secondary);
-
   font: var(--typography-heading-l);
+
+  color: var(--color-text-secondary);
 }
 
 .action {
   z-index: 1;
+
   width: 256px;
 }

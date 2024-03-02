@@ -1,9 +1,9 @@
-[data-theme="default"] {
-  --typography-text-medium-m: normal 500 16px/20px 'Yanone Kaffeesatz', Arial, sans-serif;
-  --typography-text-medium-l: normal 400 24px/24px 'Yanone Kaffeesatz', Arial, sans-serif;
+[data-theme='default'] {
+  --typography-text-medium-m: normal 500 16px/20px 'Yanone Kaffeesatz', arial, sans-serif;
+  --typography-text-medium-l: normal 400 24px/24px 'Yanone Kaffeesatz', arial, sans-serif;
 
-  --typography-heading-xl: normal 500 54px/54px 'Yanone Kaffeesatz', Arial, sans-serif;
-  --typography-heading-l: normal 400 24px/24px 'Yanone Kaffeesatz', Arial, sans-serif;
+  --typography-heading-xl: normal 500 54px/54px 'Yanone Kaffeesatz', arial, sans-serif;
+  --typography-heading-l: normal 400 24px/24px 'Yanone Kaffeesatz', arial, sans-serif;
 
-  --typography-display-m: normal 400 124px/124px 'Yanone Kaffeesatz', Arial, sans-serif;
+  --typography-display-m: normal 400 124px/124px 'Yanone Kaffeesatz', arial, sans-serif;
 }
