@@ -4,9 +4,7 @@ export const shareOrCopyUrlFx = createEffect((url: string) => {
   if (isShareAvailable()) {
     try {
       return shareUrl(url)
-    } catch {
-      return copyUrlToClipboard(url)
-    }
+    } catch {}
   }
 
   return copyUrlToClipboard(url)
