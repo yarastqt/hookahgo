@@ -7,13 +7,13 @@ import { useGSAP } from '@gsap/react'
 import { Button } from '@app/shared/ui'
 import Shape1Image from '@app/shared/assets/shape-1.png'
 import Shape2Image from '@app/shared/assets/shape-2.png'
-
-import { mainScreenModel } from './model'
-import styles from './main-screen.module.css'
 import { BracketBackward, BracketForward } from '@app/shared/icons'
 
+import { Toast } from './ui/toast'
+import { mainScreenModel } from './model'
+import styles from './main-screen.module.css'
+
 export const MainScreen: FC = () => {
-  const ref = useRef<HTMLDivElement>(null)
   const shapeTopRef = useRef<HTMLImageElement>(null)
   const shapeBottomRef = useRef<HTMLImageElement>(null)
   const firstLineRef = useRef<HTMLDivElement>(null)
@@ -21,44 +21,40 @@ export const MainScreen: FC = () => {
   const highlightsRef = useRef<HTMLDivElement>(null)
   const actionRef = useRef<HTMLButtonElement>(null)
 
-  const { createdRoomId, isRoomCreating, onCreateRoomPress } = useUnit({
-    createdRoomId: mainScreenModel.$createdRoomId,
+  const { isRoomCreating, onCreateRoomPress } = useUnit({
     isRoomCreating: mainScreenModel.$isRoomCreating,
     onCreateRoomPress: mainScreenModel.createRoomPressed,
   })
 
-  useGSAP(
-    () => {
-      const timeline = gsap.timeline({
-        delay: 1,
-        repeatDelay: 1,
-        defaults: {
-          duration: 0.5,
-          ease: 'expoScale(0.5, 7, none)',
-        },
-      })
+  useGSAP(() => {
+    const timeline = gsap.timeline({
+      delay: 1,
+      repeatDelay: 1,
+      defaults: {
+        duration: 0.5,
+        ease: 'expoScale(0.5, 7, none)',
+      },
+    })
 
-      timeline.from(firstLineRef.current, { opacity: 0, y: -24 })
+    timeline.from(firstLineRef.current, { opacity: 0, y: -24 })
 
-      timeline.from(secondLineRef.current, { opacity: 0, y: 24 })
+    timeline.from(secondLineRef.current, { opacity: 0, y: 24 })
 
-      timeline.from(highlightsRef.current, { opacity: 0 })
+    timeline.from(highlightsRef.current, { opacity: 0 })
 
-      timeline.add([
-        gsap.from(shapeTopRef.current, { opacity: 0, scale: 0 }),
-        gsap.from(shapeBottomRef.current, { opacity: 0, rotate: 90, scale: 0 }),
+    timeline.add([
+      gsap.from(shapeTopRef.current, { opacity: 0, scale: 0 }),
+      gsap.from(shapeBottomRef.current, { opacity: 0, rotate: 90, scale: 0 }),
 
-        gsap.to(shapeTopRef.current, { delay: 0.5, duration: 1, repeat: -1, y: 8, yoyo: true }),
-        gsap.to(shapeBottomRef.current, { duration: 1, repeat: -1, y: 8, yoyo: true }),
-      ])
+      gsap.to(shapeTopRef.current, { delay: 0.5, duration: 1, repeat: -1, y: 8, yoyo: true }),
+      gsap.to(shapeBottomRef.current, { duration: 1, repeat: -1, y: 8, yoyo: true }),
+    ])
 
-      timeline.from(actionRef.current, { opacity: 0 })
-    },
-    { scope: ref },
-  )
+    timeline.from(actionRef.current, { opacity: 0 })
+  })
 
   return (
-    <div className={styles.root} ref={ref}>
+    <div className={styles.root}>
       <div className={styles.content}>
         <div className={styles.heading}>
           <img
@@ -102,6 +98,8 @@ export const MainScreen: FC = () => {
         >
           {isRoomCreating ? 'Создаем ссылку...' : 'Пригласить'}
         </Button>
+
+        <Toast />
       </div>
     </div>
   )
