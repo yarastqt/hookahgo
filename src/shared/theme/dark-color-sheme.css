@@ -11,4 +11,13 @@
   /* --color-brand-bg-hovered: rgba(237, 237, 242, 1);
   --color-brand-bg-pressed: rgba(225, 225, 229, 1); */
   --color-accent: rgba(132, 255, 203, 1);
+
+  --color-positive-bg-hovered: rgba(132, 255, 203, 0.1);
+  --color-positive-bg-pressed: rgba(132, 255, 203, 0.15);
+
+  /* TODO: text? */
+  --color-negative: rgba(254, 197, 197, 1);
+  --color-negative-border: rgba(254, 197, 197, 1);
+  --color-negative-bg-hovered: rgba(254, 197, 197, 0.1);
+  --color-negative-bg-pressed: rgba(254, 197, 197, 0.15);
 }
