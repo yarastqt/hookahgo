@@ -4,9 +4,9 @@ import { useUnit } from 'effector-react'
 import { HoverEvent } from '@react-aria/interactions'
 import { Button } from '@app/shared/ui'
 
-import { Title } from './ui/title'
-import { Canvas } from './ui/canvas'
 import { roomScreenModel } from './model'
+
+import styles from './room-screen.module.css'
 
 export const RoomScreen: FC = () => {
   const { onAccceptPress, onRejectPress, room } = useUnit({
@@ -14,8 +14,6 @@ export const RoomScreen: FC = () => {
     onRejectPress: roomScreenModel.rejectPressed,
     room: roomScreenModel.$room,
   })
-
-  console.log('>>> room?.status', room)
 
   const onHoverStart = (event: HoverEvent) => {
     const rect = event.target.getBoundingClientRect()
@@ -33,21 +31,26 @@ export const RoomScreen: FC = () => {
   }
 
   return (
-    <Canvas>
-      <Title />
+    <div className={styles.root}>
+      <div className={styles.content}>
+        <div className={styles.title}>Пойдешь в кальянную?</div>
 
-      <Button excludeFromTabOrder onPress={onAccceptPress} variant="default">
-        👋 Да
-      </Button>
-      <Button
-        excludeFromTabOrder
-        onHoverStart={onHoverStart}
-        onPress={onRejectPress}
-        variant="default"
-      >
-        🦧 Нет
-      </Button>
-    </Canvas>
+        <div className={styles.actions}>
+          <Button excludeFromTabOrder onPress={onAccceptPress} variant="action">
+            👋 Да
+          </Button>
+
+          <Button
+            excludeFromTabOrder
+            // onHoverStart={onHoverStart}
+            onPress={onRejectPress}
+            variant="danger"
+          >
+            🦧 Нет
+          </Button>
+        </div>
+      </div>
+    </div>
   )
 }
 
