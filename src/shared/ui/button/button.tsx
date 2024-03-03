@@ -10,11 +10,12 @@ import styles from './button.module.css'
 export interface ButtonProps extends AriaButtonProps, HoverProps {
   children: ReactNode
   className?: string
+  isInactive?: boolean
   variant: 'default' | 'action' | 'danger'
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-  const { children, className, variant } = props
+  const { children, className, isInactive, variant } = props
 
   const rootRef = useObjectRef(ref)
   const { hoverProps, isHovered } = useHover(props)
@@ -27,6 +28,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =>
         styles.root,
         {
           [styles.root_isHovered]: isHovered,
+          [styles.root_isInactive]: isInactive,
           [styles.root_isPressed]: isPressed,
           [styles.root_variant_action]: variant === 'action',
           [styles.root_variant_danger]: variant === 'danger',

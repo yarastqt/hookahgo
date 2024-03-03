@@ -3,7 +3,7 @@
   grid-template-rows: auto 1fr;
 
   box-sizing: border-box;
-  max-width: 80vw;
+  /* max-width: 80vw; */
   height: 100vh;
   margin: 0 auto;
   padding: 64px;

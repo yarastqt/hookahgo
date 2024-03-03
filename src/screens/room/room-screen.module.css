@@ -11,6 +11,32 @@
   gap: 32px;
 }
 
+.heading {
+  position: relative;
+
+  pointer-events: none;
+}
+
+.image {
+  position: absolute;
+  z-index: 1;
+
+  width: 256px;
+  height: 256px;
+}
+
+.image_position_top {
+  top: -128px;
+  right: -128px;
+
+  opacity: 0.75;
+}
+
+.image_position_bottom {
+  bottom: -116px;
+  left: -116px;
+}
+
 .title {
   position: relative;
   z-index: 1;

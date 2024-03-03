@@ -20,6 +20,10 @@
   -webkit-tap-highlight-color: none;
 }
 
+.root_isInactive {
+  opacity: 0.1;
+}
+
 .root_variant_action {
   color: var(--color-text-accent);
   border: 2px solid var(--color-accent-border);
