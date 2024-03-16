@@ -1,8 +1,7 @@
 import { FC, ReactNode } from 'react'
 
-import { FluidCanvas } from '@app/shared/ui'
-
 import { Logo } from './ui/logo'
+import { Topology } from './ui/topology'
 import styles from './main-layout.module.css'
 
 export interface MainLayoutProps {
@@ -18,7 +17,7 @@ export const MainLayout: FC<MainLayoutProps> = (props) => {
 
       {children}
 
-      <FluidCanvas />
+      <Topology />
     </div>
   )
 }
