@@ -1,9 +1,8 @@
-import { type FC, useRef } from 'react'
+import type { FC } from 'react'
 import { useUnit } from 'effector-react'
 import cx from 'clsx'
-import gsap from 'gsap'
+import { motion } from 'framer-motion'
 
-import { useGSAP } from '@gsap/react'
 import { usePress, useHover } from '@react-aria/interactions'
 import { mergeProps } from '@react-aria/utils'
 import { CopyOutline } from '@app/shared/icons'
@@ -20,36 +19,31 @@ export const Toast: FC = () => {
 
   const isOpen = createdRoomId !== null
 
-  const ref = useRef<HTMLDivElement>(null)
   const { isPressed, pressProps } = usePress({ onPress: onToastPress })
   const { isHovered, hoverProps } = useHover({})
-
-  useGSAP(
-    () => {
-      if (!isOpen) {
-        return
-      }
-
-      gsap.from(ref.current, { duration: 0.25, ease: 'expoScale(0.5, 7, none)', opacity: 0, y: 24 })
-    },
-    { dependencies: [createdRoomId] },
-  )
 
   if (!isOpen) {
     return null
   }
 
   return (
-    <div
-      {...mergeProps(pressProps, hoverProps)}
+    <motion.div
+      {...mergeProps<any>(pressProps, hoverProps)}
+      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 24 }}
+      transition={{
+        type: 'spring',
+        damping: 30,
+        duration: 0.5,
+        stiffness: 200,
+      }}
       className={cx(styles.root, {
         [styles.root_isPressed]: isPressed,
         [styles.root_isHovered]: isHovered,
       })}
-      ref={ref}
     >
       {urls.getRoomUrl(createdRoomId).pathname}
       <CopyOutline />
-    </div>
+    </motion.div>
   )
 }
