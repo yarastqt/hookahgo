@@ -17,6 +17,7 @@ export const MainLayout: FC<MainLayoutProps> = (props) => {
 
       {children}
 
+      {/* TODO: надо правильно расположить все. */}
       <Topology />
     </div>
   )

@@ -3,8 +3,13 @@
   grid-template-rows: auto 1fr;
 
   box-sizing: border-box;
-  /* max-width: 80vw; */
   height: 100vh;
   margin: 0 auto;
-  padding: 64px;
+  padding: 24px;
+}
+
+@media (min-width: 560px) {
+  .root {
+    padding: 64px;
+  }
 }

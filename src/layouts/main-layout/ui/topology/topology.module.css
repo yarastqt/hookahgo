@@ -3,4 +3,8 @@
   inset: 0;
 
   z-index: -1;
+
+  margin: auto;
+
+  opacity: 0.1;
 }

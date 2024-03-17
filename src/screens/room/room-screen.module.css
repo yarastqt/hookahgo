@@ -28,13 +28,11 @@
 .image_position_top {
   top: -128px;
   right: -128px;
-
-  opacity: 0.75;
 }
 
 .image_position_bottom {
-  bottom: -116px;
-  left: -116px;
+  bottom: -152px;
+  left: -152px;
 }
 
 .title {

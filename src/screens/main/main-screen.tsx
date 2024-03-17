@@ -16,33 +16,35 @@ export const MainScreen: FC = () => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.content}>
-        <div className={styles.heading}>
+      <div className={styles.heading}>
+        <div className={styles.firstline}>
           <Overflow>
             <FadeIn delay={1} y="100%">
               <div className={styles.title}>Пригласи своего бро</div>
             </FadeIn>
           </Overflow>
-
-          <div className={styles.secondline}>
-            <Highlights />
-
-            <Overflow>
-              <FadeIn delay={1.5} y="-100%">
-                <div className={styles.title}>в кальянную</div>
-              </FadeIn>
-            </Overflow>
-          </div>
         </div>
 
-        <FadeIn delay={2.5} className={styles.action}>
-          <Button onPress={onCreateRoomPress} variant="action">
-            {isRoomCreating ? 'Создаем ссылку...' : '🔥 Пригласить'}
-          </Button>
-        </FadeIn>
+        <div className={styles.highlights}>
+          <Highlights />
+        </div>
 
-        <Toast />
+        <div className={styles.secondline}>
+          <Overflow>
+            <FadeIn delay={1.5} y="-100%">
+              <div className={styles.title}>в кальянную</div>
+            </FadeIn>
+          </Overflow>
+        </div>
       </div>
+
+      <FadeIn delay={2.5} className={styles.action}>
+        <Button onPress={onCreateRoomPress} variant="action">
+          {isRoomCreating ? 'Создаем ссылку...' : '🔥 Пригласить'}
+        </Button>
+      </FadeIn>
+
+      <Toast />
     </div>
   )
 }
