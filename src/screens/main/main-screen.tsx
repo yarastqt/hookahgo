@@ -40,7 +40,7 @@ export const MainScreen: FC = () => {
 
       <FadeIn delay={2.5} className={styles.action}>
         <Button onPress={onCreateRoomPress} variant="action">
-          {isRoomCreating ? 'Создаем ссылку...' : '🔥 Пригласить'}
+          {isRoomCreating ? 'Создаем ссылку...' : '>>> Пригласить <<<'}
         </Button>
       </FadeIn>
 
