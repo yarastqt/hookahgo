@@ -4,6 +4,7 @@
 
   box-sizing: border-box;
   height: 100vh;
+  height: 100dvh;
   margin: 0 auto;
   padding: 24px;
 }
