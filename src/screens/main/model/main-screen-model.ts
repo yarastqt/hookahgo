@@ -8,6 +8,7 @@ const $createdRoomId = createStore<RoomId | null>(null)
 
 const createRoomPressed = createEvent()
 const toastPressed = createEvent()
+const toastClosed = createEvent()
 
 const createRoomFx = createEffect(() => {
   return api.createRoom()
@@ -34,9 +35,15 @@ sample({
   target: shareOrCopyUrlFx,
 })
 
+sample({
+  clock: toastClosed,
+  target: $createdRoomId.reinit,
+})
+
 export const mainScreenModel = {
   $createdRoomId,
   $isRoomCreating,
   createRoomPressed,
   toastPressed,
+  toastClosed,
 }

@@ -1,49 +1,55 @@
-import type { FC } from 'react'
 import { useUnit } from 'effector-react'
-import cx from 'clsx'
-import { motion } from 'framer-motion'
+import { AnimatePresence, PanInfo, motion } from 'framer-motion'
+import { type FC, useCallback } from 'react'
 
-import { usePress, useHover } from '@react-aria/interactions'
-import { mergeProps } from '@react-aria/utils'
 import { CopyOutline } from '@app/shared/icons'
+import { useIsMobileDevice } from '@app/shared/lib/use-is-mobile-device'
 import { urls } from '@app/shared/urls'
 
 import { mainScreenModel } from '../../model'
 import styles from './toast.module.css'
 
 export const Toast: FC = () => {
-  const { createdRoomId, onToastPress } = useUnit({
+  const isMobileDevice = useIsMobileDevice()
+
+  const { createdRoomId, onToastClose, onToastPress } = useUnit({
     createdRoomId: mainScreenModel.$createdRoomId,
+    onToastClose: mainScreenModel.toastClosed,
     onToastPress: mainScreenModel.toastPressed,
   })
 
   const isOpen = createdRoomId !== null
 
-  const { isPressed, pressProps } = usePress({ onPress: onToastPress })
-  const { isHovered, hoverProps } = useHover({})
+  const onDragEndHandler = useCallback(
+    (_: unknown, info: PanInfo) => {
+      if (info.offset.y < 0 && (info.velocity.y > 10 || info.offset.y < -32)) {
+        onToastClose()
+      }
+    },
+    [onToastClose],
+  )
 
-  if (!isOpen) {
-    return null
-  }
+  const hiddenVerticalPosition = isMobileDevice ? -88 : 128
 
   return (
-    <motion.div
-      {...mergeProps<any>(pressProps, hoverProps)}
-      animate={{ opacity: 1, y: 0 }}
-      initial={{ opacity: 0, y: 24 }}
-      transition={{
-        type: 'spring',
-        damping: 30,
-        duration: 0.5,
-        stiffness: 200,
-      }}
-      className={cx(styles.root, {
-        [styles.root_isPressed]: isPressed,
-        [styles.root_isHovered]: isHovered,
-      })}
-    >
-      {urls.getRoomUrl(createdRoomId).pathname}
-      <CopyOutline />
-    </motion.div>
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          animate={{ y: 0 }}
+          exit={{ y: hiddenVerticalPosition }}
+          initial={{ y: hiddenVerticalPosition }}
+          transition={{ type: 'spring', damping: 30, stiffness: 500 }}
+          className={styles.root}
+          drag={isMobileDevice ? 'y' : false}
+          dragConstraints={{ bottom: 0, top: 0 }}
+          dragElastic={{ top: 1 }}
+          onDragEnd={onDragEndHandler}
+          onTap={onToastPress}
+        >
+          {urls.getRoomUrl(createdRoomId).pathname}
+          <CopyOutline />
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }
