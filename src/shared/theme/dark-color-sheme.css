@@ -1,9 +1,15 @@
 [data-color-scheme='dark'] {
   --color-surface-elevated-0: #060508;
   --color-text-primary: #f8f6e2;
-  --color-text-secondary: rgba(124, 124, 111, 1);
-  --color-brand-text-on: rgba(14, 16, 15, 1);
-  --color-brand-bg-base: rgba(255, 252, 225, 1);
+  --color-text-secondary: rgba(248, 246, 226, 0.6);
+
+  --color-brand-text-on: #060508;
+  --color-brand-bg-base: #f4c644;
+  --color-brand-bg-hovered: #fac60a;
+  --color-brand-bg-pressed: #fab404;
+
+  --color-default-text-on: #060508;
+  --color-default-bg-base: #f8f6e2;
 
   --color-accent-border: rgba(132, 255, 203, 1);
   --color-text-accent: rgba(132, 255, 203, 1);

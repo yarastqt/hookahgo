@@ -16,7 +16,7 @@
 
   transition: background-color 250ms ease;
 
-  -webkit-tap-highlight-color: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .root_isInactive {
@@ -24,17 +24,16 @@
 }
 
 .root_variant_action {
-  color: var(--color-text-accent);
-  border: 2px solid var(--color-accent-border);
-  background-color: transparent;
+  color: var(--color-brand-text-on);
+  background-color: var(--color-brand-bg-base);
 }
 
 .root_isHovered.root_variant_action {
-  background-color: var(--color-positive-bg-hovered);
+  background: var(--color-brand-bg-hovered);
 }
 
 .root_isPressed.root_variant_action {
-  background-color: var(--color-positive-bg-pressed);
+  background-color: var(--color-brand-bg-pressed);
 }
 
 .root_variant_danger {

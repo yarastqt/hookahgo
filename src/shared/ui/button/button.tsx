@@ -1,9 +1,11 @@
 import cx from 'clsx'
 import { ReactNode, forwardRef } from 'react'
+import { motion } from 'framer-motion'
 
 import { HoverProps, useHover } from '@react-aria/interactions'
 import { AriaButtonProps, useButton } from '@react-aria/button'
 import { useObjectRef, mergeProps } from '@react-aria/utils'
+import { SupressWarning } from '@app/shared/lib/utility-types'
 
 import styles from './button.module.css'
 
@@ -22,8 +24,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =>
   const { buttonProps, isPressed } = useButton(props, rootRef)
 
   return (
-    <button
-      {...mergeProps(buttonProps, hoverProps)}
+    <motion.button
+      {...mergeProps<SupressWarning>(buttonProps, hoverProps)}
       className={cx(
         styles.root,
         {
@@ -36,8 +38,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =>
         className,
       )}
       ref={rootRef}
+      whileTap={{ scale: 0.96 }}
+      transition={{
+        type: 'spring',
+        damping: 30,
+        duration: 0.2,
+        stiffness: 300,
+      }}
     >
       {children}
-    </button>
+    </motion.button>
   )
 })
