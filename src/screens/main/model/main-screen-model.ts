@@ -18,7 +18,8 @@ const $isRoomCreating = createRoomFx.pending
 
 sample({
   clock: createRoomPressed,
-  filter: $isRoomCreating.map((isRoomCreating) => !isRoomCreating),
+  source: { isRoomCreating: $isRoomCreating, createdRoomId: $createdRoomId },
+  filter: ({ isRoomCreating, createdRoomId }) => !isRoomCreating && !createdRoomId,
   target: createRoomFx,
 })
 
