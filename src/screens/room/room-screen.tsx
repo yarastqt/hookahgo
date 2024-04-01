@@ -1,9 +1,9 @@
-import { FC } from 'react'
 import { useUnit } from 'effector-react'
+import { FC } from 'react'
 
 import { RoomStatus } from '@app/shared/api'
+import { Button, FadeIn, Overflow } from '@app/shared/ui'
 import { HoverEvent } from '@react-aria/interactions'
-import { Button, FadeIn } from '@app/shared/ui'
 
 import { roomScreenModel } from './model'
 import styles from './room-screen.module.css'
@@ -37,31 +37,14 @@ export const RoomScreen: FC = () => {
   return (
     <div className={styles.root}>
       <div className={styles.content}>
-        <div className={styles.heading}>
-          <div
-            style={{
-              overflow: 'hidden',
-              zIndex: 1,
-              position: 'relative',
-              paddingTop: 32,
-            }}
-          >
-            <FadeIn className={styles.title} delay={1} y="100%">
-              Пойдешь в кальянную?
-            </FadeIn>
-          </div>
-        </div>
+        <Overflow>
+          <FadeIn className={styles.title} delay={1} y="100%">
+            Пойдешь в кальянную?
+          </FadeIn>
+        </Overflow>
 
-        <div
-          style={{
-            overflow: 'hidden',
-            paddingTop: 8,
-            paddingBottom: 16,
-            position: 'relative',
-            zIndex: 1,
-          }}
-        >
-          <FadeIn className={styles.actions} delay={1.5} y="-100%">
+        <Overflow>
+          <FadeIn className={styles.actions} delay={1.5}>
             <Button
               excludeFromTabOrder
               isInactive={isRejected}
@@ -81,7 +64,7 @@ export const RoomScreen: FC = () => {
               🦧 Нет
             </Button>
           </FadeIn>
-        </div>
+        </Overflow>
       </div>
     </div>
   )

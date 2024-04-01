@@ -11,35 +11,12 @@
   gap: 32px;
 }
 
-.heading {
-  position: relative;
-
-  pointer-events: none;
-}
-
-.image {
-  position: absolute;
-  z-index: 1;
-
-  width: 256px;
-  height: 256px;
-}
-
-.image_position_top {
-  top: -128px;
-  right: -128px;
-}
-
-.image_position_bottom {
-  bottom: -152px;
-  left: -152px;
-}
-
 .title {
   position: relative;
   z-index: 1;
 
-  font: var(--typography-display-m);
+  font: var(--typography-display-s);
+  text-align: center;
 
   color: var(--color-text-primary);
 }
@@ -49,4 +26,17 @@
 
   display: flex;
   gap: 24px;
+}
+
+@media (min-width: 560px) {
+  .title {
+    font: var(--typography-display-m);
+    text-align: left;
+  }
+
+  .actions {
+    align-self: center;
+
+    width: 512px;
+  }
 }
