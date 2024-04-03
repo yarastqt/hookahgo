@@ -5,8 +5,8 @@
 
   --color-brand-text-on: #060508;
   --color-brand-bg-base: #f4c644;
-  --color-brand-bg-hovered: #fac60a;
-  --color-brand-bg-pressed: #fab404;
+  --color-brand-bg-hovered: #f2b91d;
+  --color-brand-bg-pressed: #e6ac0d;
 
   --color-default-text-on: #060508;
   --color-default-bg-base: #f8f6e2;
@@ -24,8 +24,9 @@
   --color-line-secondary: rgba(124, 124, 111, 0.1);
 
   /* TODO: text? */
-  --color-negative: rgba(254, 197, 197, 1);
-  --color-negative-border: rgba(254, 197, 197, 1);
-  --color-negative-bg-hovered: rgba(254, 197, 197, 0.1);
-  --color-negative-bg-pressed: rgba(254, 197, 197, 0.15);
+  --color-negative-text-on: #fffce1;
+  --color-negative-border: rgb(6, 6, 6);
+  --color-negative-bg-base: #ff335b;
+  --color-negative-bg-hovered: #ff1847;
+  --color-negative-bg-pressed: #fd0033;
 }

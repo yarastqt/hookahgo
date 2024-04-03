@@ -38,9 +38,8 @@
 }
 
 .root_variant_danger {
-  color: var(--color-negative);
-  border: 2px solid var(--color-negative-border);
-  background-color: transparent;
+  color: var(--color-negative-text-on);
+  background-color: var(--color-negative-bg-base);
 }
 
 .root_isHovered.root_variant_danger {
