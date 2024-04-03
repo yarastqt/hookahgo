@@ -6,7 +6,7 @@
   height: 100vh;
   height: 100dvh;
   margin: 0 auto;
-  padding: 24px;
+  padding: 32px;
 }
 
 @media (min-width: 560px) {
