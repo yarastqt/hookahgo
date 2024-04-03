@@ -51,7 +51,7 @@ export const RoomScreen: FC = () => {
               onPress={onAccceptPress}
               variant="action"
             >
-              👋 Да
+              Конечно да
             </Button>
 
             <Button
@@ -61,7 +61,7 @@ export const RoomScreen: FC = () => {
               onPress={onRejectPress}
               variant="danger"
             >
-              🦧 Нет
+              Нет, я не игрок
             </Button>
           </FadeIn>
         </Overflow>
