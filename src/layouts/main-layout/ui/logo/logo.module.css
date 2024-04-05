@@ -1,4 +1,11 @@
 .root {
   position: relative;
   z-index: 1;
+
+  border-radius: 24px;
+}
+
+.root.focusRing {
+  outline: 2px solid var(--id-color-brand-border);
+  outline-offset: 2px;
 }

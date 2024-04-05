@@ -20,6 +20,11 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.root.focusRing {
+  outline: 2px solid var(--id-color-brand-border);
+  outline-offset: 2px;
+}
+
 .root_isInactive {
   opacity: 0.1;
 }
