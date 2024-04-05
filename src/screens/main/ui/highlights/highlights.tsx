@@ -1,5 +1,5 @@
-import { useState, type FC, type ReactNode, useEffect, useCallback } from 'react'
 import { Variants, motion, useAnimation } from 'framer-motion'
+import { type FC, type ReactNode, useCallback, useEffect, useState } from 'react'
 
 import { BracketBackward, BracketForward } from '@app/shared/icons'
 
@@ -33,8 +33,7 @@ export const Highlights: FC = () => {
         type: 'spring',
         damping: 30,
         delay: 2,
-        duration: 2,
-        stiffness: 200,
+        stiffness: 150,
       }}
     >
       <BracketBackward />
