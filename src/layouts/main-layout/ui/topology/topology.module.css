@@ -9,5 +9,7 @@
   margin-top: -640px;
   margin-left: -640px;
 
+  pointer-events: none;
+
   opacity: 0.1;
 }
