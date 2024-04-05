@@ -1,5 +1,5 @@
-import type { FC, ReactNode } from 'react'
 import { motion } from 'framer-motion'
+import type { FC, ReactNode } from 'react'
 
 export interface FadeInProps {
   children: ReactNode
@@ -20,8 +20,7 @@ export const FadeIn: FC<FadeInProps> = (props) => {
         type: 'spring',
         damping: 30,
         delay,
-        duration: 2,
-        stiffness: 200,
+        stiffness: 150,
       }}
     >
       {children}
