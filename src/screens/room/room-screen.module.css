@@ -26,6 +26,13 @@
 
   display: flex;
   gap: 24px;
+
+  width: 100%;
+}
+
+.action {
+  display: flex;
+  flex: 1;
 }
 
 @media (min-width: 560px) {
