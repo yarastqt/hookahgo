@@ -14,15 +14,16 @@ export interface ButtonProps extends AriaButtonProps, HoverProps {
   children: ReactNode
   className?: string
   isInactive?: boolean
+  isSelected?: boolean
   variant: 'default' | 'action' | 'danger'
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-  const { children, className, isInactive, variant } = props
+  const { children, className, isInactive, isSelected, variant } = props
 
   const rootRef = useObjectRef(ref)
   const { hoverProps, isHovered } = useHover(props)
-  const { buttonProps, isPressed } = useButton(props, rootRef)
+  const { buttonProps, isPressed } = useButton({ ...props, isDisabled: isSelected }, rootRef)
 
   return (
     <FocusRing focusRingClass={styles.focusRing}>
@@ -34,6 +35,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =>
             [styles.root_isHovered]: isHovered,
             [styles.root_isInactive]: isInactive,
             [styles.root_isPressed]: isPressed,
+            [styles.root_isSelected]: isSelected,
             [styles.root_variant_action]: variant === 'action',
             [styles.root_variant_danger]: variant === 'danger',
           },

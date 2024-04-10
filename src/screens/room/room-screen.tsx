@@ -29,13 +29,23 @@ export const RoomScreen: FC = () => {
 
         <div className={styles.actions}>
           <FadeIn className={styles.action} delay={2}>
-            <Button isInactive={isRejected} onPress={onAccceptPress} variant="action">
+            <Button
+              isInactive={isRejected}
+              isSelected={isAccepted}
+              onPress={onAccceptPress}
+              variant="action"
+            >
               Конечно да
             </Button>
           </FadeIn>
 
           <FadeIn className={styles.action} delay={2.5}>
-            <Button isInactive={isAccepted} onPress={onRejectPress} variant="danger">
+            <Button
+              isInactive={isAccepted}
+              isSelected={isRejected}
+              onPress={onRejectPress}
+              variant="danger"
+            >
               Нет, я не игрок
             </Button>
           </FadeIn>

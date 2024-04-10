@@ -6,6 +6,6 @@
 }
 
 .root.focusRing {
-  outline: 2px solid var(--id-color-brand-border);
+  outline: 2px solid var(--color-brand-border);
   outline-offset: 2px;
 }
