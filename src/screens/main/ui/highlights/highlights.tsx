@@ -1,5 +1,5 @@
-import { Variants, motion, useAnimation } from 'framer-motion'
-import { type FC, type ReactNode, useCallback, useEffect, useState } from 'react'
+import { motion, useAnimation } from 'framer-motion'
+import { type FC, useEffect, useState } from 'react'
 
 import { BracketBackward, BracketForward } from '@app/shared/icons'
 
