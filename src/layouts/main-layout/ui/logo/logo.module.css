@@ -3,6 +3,8 @@
   z-index: 1;
 
   border-radius: 24px;
+
+  -webkit-tap-highlight-color: transparent;
 }
 
 .root.focusRing {
