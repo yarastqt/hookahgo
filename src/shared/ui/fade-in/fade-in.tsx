@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import type { FC, ReactNode } from 'react'
+import { type ReactNode, forwardRef } from 'react'
 
 export interface FadeInProps {
   children: ReactNode
@@ -8,7 +8,7 @@ export interface FadeInProps {
   y?: string | number
 }
 
-export const FadeIn: FC<FadeInProps> = (props) => {
+export const FadeIn = forwardRef<HTMLDivElement, FadeInProps>((props, ref) => {
   const { children, className, delay = 0, y = 0 } = props
 
   return (
@@ -16,6 +16,7 @@ export const FadeIn: FC<FadeInProps> = (props) => {
       animate={{ y: 0, opacity: 1 }}
       className={className}
       initial={{ y, opacity: 0 }}
+      ref={ref}
       transition={{
         type: 'spring',
         damping: 30,
@@ -26,4 +27,4 @@ export const FadeIn: FC<FadeInProps> = (props) => {
       {children}
     </motion.div>
   )
-}
+})
