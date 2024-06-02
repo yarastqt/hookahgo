@@ -1,0 +1,31 @@
+.root {
+  position: absolute;
+  z-index: 1;
+  top: 16px;
+  right: 24px;
+  left: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 64px;
+  padding: 0 24px;
+
+  font: var(--typography-text-medium-l);
+  cursor: pointer;
+  user-select: none;
+
+  color: var(--color-default-text-on);
+  border-radius: 24px;
+  background-color: var(--color-default-bg-base);
+  gap: 8px;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 560px) {
+  .root {
+    inset: auto auto 64px;
+  }
+}
