@@ -1,5 +1,4 @@
-@import url('../shared/theme/dark-color-sheme.css');
-@import url('../shared/theme/typography.css');
+@import url('../shared/theme/index.css');
 
 body {
   overflow: hidden;
