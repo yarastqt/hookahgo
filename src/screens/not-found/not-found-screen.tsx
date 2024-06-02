@@ -10,7 +10,7 @@ export const NotFoundScreen: FC = () => {
     <div className={styles.root}>
       <div className={styles.title}>Страница не найдена x_X</div>
 
-      <Button to={routes.main} variant="action">
+      <Button className={styles.action} to={routes.main} variant="action">
         Вернуться на главную
       </Button>
     </div>
