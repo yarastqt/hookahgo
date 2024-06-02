@@ -10,6 +10,7 @@
   font: var(--typography-text-medium-l);
   cursor: pointer;
   user-select: none;
+  text-decoration: none;
 
   border: 0;
   border-radius: 24px;

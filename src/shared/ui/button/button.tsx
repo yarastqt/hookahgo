@@ -1,3 +1,5 @@
+import { RouteInstance } from 'atomic-router'
+import { Link } from 'atomic-router-react'
 import cx from 'clsx'
 import { motion } from 'framer-motion'
 import { ReactNode, forwardRef } from 'react'
@@ -10,24 +12,29 @@ import { mergeProps, useObjectRef } from '@react-aria/utils'
 
 import styles from './button.module.css'
 
+const MotionLink = motion(Link)
+
 export interface ButtonProps extends AriaButtonProps, HoverProps {
   children: ReactNode
   className?: string
   isInactive?: boolean
   isSelected?: boolean
+  to?: RouteInstance<{}>
   variant: 'default' | 'action' | 'danger'
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-  const { children, className, isInactive, isSelected, variant } = props
+  const { children, className, isInactive, isSelected, to, variant } = props
 
   const rootRef = useObjectRef(ref)
   const { hoverProps, isHovered } = useHover(props)
   const { buttonProps, isPressed } = useButton({ ...props, isDisabled: isSelected }, rootRef)
 
+  const Element = to ? MotionLink : motion.div
+
   return (
     <FocusRing focusRingClass={styles.focusRing}>
-      <motion.button
+      <Element
         {...mergeProps<SupressWarning>(buttonProps, hoverProps)}
         className={cx(
           styles.root,
@@ -42,16 +49,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =>
           className,
         )}
         ref={rootRef}
-        whileTap={{ scale: 0.96 }}
+        to={to}
         transition={{
           type: 'spring',
           damping: 30,
           duration: 0.2,
           stiffness: 300,
         }}
+        whileTap={{ scale: 0.96 }}
       >
         {children}
-      </motion.button>
+      </Element>
     </FocusRing>
   )
 })
