@@ -5,6 +5,9 @@ export const AppUrl = {
   getRoomUrl: (roomId = ':roomId') => {
     return createAppUrl(`/r/${roomId}`)
   },
+  getNotFoundUrl: () => {
+    return createAppUrl('/404')
+  },
 }
 
 function createAppUrl(url: string) {

@@ -7,8 +7,8 @@ import { NotFoundScreen } from './not-found'
 import { RoomScreen } from './room'
 
 const RoutesView = createRoutesView({
-  routes: [MainScreen, RoomScreen],
-  otherwise: NotFoundScreen,
+  routes: [MainScreen, RoomScreen, NotFoundScreen],
+  otherwise: NotFoundScreen.view,
 })
 
 export const Screens = () => {
