@@ -8,7 +8,7 @@ export interface RoomRouteParams {
 }
 
 export const routes = {
-  main: createRoute<any>(),
+  main: createRoute(),
   room: createRoute<RoomRouteParams>(),
 }
 
