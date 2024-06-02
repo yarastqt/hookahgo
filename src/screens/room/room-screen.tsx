@@ -96,7 +96,7 @@ export const RoomScreen: FC = () => {
             </Button>
           </FadeIn>
 
-          {isRejectedTry && <div style={{ display: 'flex', flex: 1 }}></div>}
+          {isRejectedTry && <div className={styles.action}></div>}
 
           <FadeIn className={styles.action} delay={2.5} ref={rejectContainerRef}>
             <Button
