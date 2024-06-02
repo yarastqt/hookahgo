@@ -4,7 +4,7 @@ import { type FC, useCallback } from 'react'
 
 import { CopyOutline } from '@app/shared/icons'
 import { useIsMobileDevice } from '@app/shared/lib/use-is-mobile-device'
-import { urls } from '@app/shared/urls'
+import { AppUrl } from '@app/shared/urls'
 
 import { mainScreenModel } from '../../model'
 import styles from './toast.module.css'
@@ -46,7 +46,7 @@ export const Toast: FC = () => {
           onDragEnd={onDragEndHandler}
           onTap={onToastPress}
         >
-          {urls.getRoomUrl(createdRoomId).pathname}
+          {AppUrl.getRoomUrl(createdRoomId).pathname}
           <CopyOutline />
         </motion.div>
       )}

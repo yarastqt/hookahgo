@@ -2,7 +2,7 @@ import { createEffect, createEvent, createStore, sample } from 'effector'
 
 import { RoomId, api } from '@app/shared/api'
 import { shareOrCopyUrlFx } from '@app/shared/lib/effector-share'
-import { urls } from '@app/shared/urls'
+import { AppUrl } from '@app/shared/urls'
 
 const $createdRoomId = createStore<RoomId | null>(null)
 
@@ -32,7 +32,7 @@ sample({
   clock: toastPressed,
   source: $createdRoomId,
   filter: Boolean,
-  fn: (roomId) => urls.getRoomUrl(roomId).href,
+  fn: (roomId) => AppUrl.getRoomUrl(roomId).href,
   target: shareOrCopyUrlFx,
 })
 
