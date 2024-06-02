@@ -1,23 +1,25 @@
-import { createEffect, sample, createStore, attach, createEvent, scopeBind } from 'effector'
 import { RouteParamsAndQuery, chainRoute } from 'atomic-router'
+import { attach, createEffect, createEvent, createStore, sample, scopeBind } from 'effector'
 
 import {
   type Room,
   RoomStatus,
   type Unsubscribe,
-  api,
   type UpdateRoomStatusParams,
+  api,
 } from '@app/shared/api'
+import { scope } from '@app/shared/config'
 import { routes } from '@app/shared/router'
 import { RoomRouteParams } from '@app/shared/router/router'
-import { scope } from '@app/shared/config'
 
 const $subscribeRef = createStore<Unsubscribe | null>(null)
 const $room = createStore<Room | null>(null)
+const $isToastOpen = createStore(false)
 
 const roomUpdated = createEvent<Room>()
 const acceptPressed = createEvent()
 const rejectPressed = createEvent()
+const closeToastPressed = createEvent()
 
 const subscribeToRoomFx = createEffect((input: RouteParamsAndQuery<RoomRouteParams>) => {
   return api.subscribeToRoom({
@@ -75,12 +77,26 @@ sample({
 })
 
 sample({
+  clock: updateRoomStatusFx.done,
+  fn: () => true,
+  target: $isToastOpen,
+})
+
+sample({
+  clock: closeToastPressed,
+  fn: () => false,
+  target: $isToastOpen,
+})
+
+sample({
   clock: roomScreenLoadedRoute.closed,
   target: [unsubscribeToRoomFx, $room.reinit],
 })
 
 export const roomScreenModel = {
+  $isToastOpen,
   $room,
   acceptPressed,
+  closeToastPressed,
   rejectPressed,
 }

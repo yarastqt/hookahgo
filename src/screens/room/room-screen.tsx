@@ -2,16 +2,18 @@ import { useUnit } from 'effector-react'
 import { FC, useCallback, useRef, useState } from 'react'
 
 import { RoomStatus } from '@app/shared/api'
-import { Button, FadeIn, Overflow } from '@app/shared/ui'
+import { Button, FadeIn, Overflow, Toast } from '@app/shared/ui'
 
 import { roomScreenModel } from './model'
 import styles from './room-screen.module.css'
 
-const REJECT_TEXTS = ['Нет, я не игрок', 'Точно нет?', 'Да нет']
+const REJECT_BUTTON_TEXTS = ['Нет, я не игрок', 'Точно нет?', 'Да нет']
 
 export const RoomScreen: FC = () => {
-  const { onAccceptPress, onRejectPress, room } = useUnit({
+  const { isToastOpen, onAccceptPress, onCloseToastPress, onRejectPress, room } = useUnit({
+    isToastOpen: roomScreenModel.$isToastOpen,
     onAccceptPress: roomScreenModel.acceptPressed,
+    onCloseToastPress: roomScreenModel.closeToastPressed,
     onRejectPress: roomScreenModel.rejectPressed,
     room: roomScreenModel.$room,
   })
@@ -76,40 +78,47 @@ export const RoomScreen: FC = () => {
   const isRejectedTry = rejectCounter > 0
 
   return (
-    <div className={styles.root} ref={rootRef}>
-      <div className={styles.content}>
-        <Overflow>
-          <FadeIn className={styles.title} delay={1} y="100%">
-            Пойдешь в кальянную?
-          </FadeIn>
-        </Overflow>
+    <>
+      <div className={styles.root} ref={rootRef}>
+        <div className={styles.content}>
+          <Overflow>
+            <FadeIn className={styles.title} delay={1} y="100%">
+              Пойдешь в кальянную?
+            </FadeIn>
+          </Overflow>
 
-        <div className={styles.actions}>
-          <FadeIn className={styles.action} delay={2}>
-            <Button
-              isInactive={isRejected}
-              isSelected={isAccepted}
-              onPress={onAccceptPress}
-              variant="action"
-            >
-              Конечно да
-            </Button>
-          </FadeIn>
+          <div className={styles.actions}>
+            <FadeIn className={styles.action} delay={2}>
+              <Button
+                isInactive={isRejected}
+                isSelected={isAccepted}
+                onPress={onAccceptPress}
+                variant="action"
+              >
+                Конечно да
+              </Button>
+            </FadeIn>
 
-          {isRejectedTry && <div className={styles.action}></div>}
+            {isRejectedTry && <div className={styles.action}></div>}
 
-          <FadeIn className={styles.action} delay={2.5} ref={rejectContainerRef}>
-            <Button
-              isInactive={isAccepted}
-              isSelected={isRejected}
-              onPress={onRejectPressHandler}
-              variant="danger"
-            >
-              {REJECT_TEXTS[rejectCounter]}
-            </Button>
-          </FadeIn>
+            <FadeIn className={styles.action} delay={2.5} ref={rejectContainerRef}>
+              <Button
+                isInactive={isAccepted}
+                isSelected={isRejected}
+                onPress={onRejectPressHandler}
+                variant="danger"
+              >
+                {REJECT_BUTTON_TEXTS[rejectCounter]}
+              </Button>
+            </FadeIn>
+          </div>
         </div>
       </div>
-    </div>
+
+      <Toast isOpen={isToastOpen} onClose={onCloseToastPress}>
+        {isAccepted && 'Выбор настоящего профессионала'}
+        {isRejected && 'Попробуем в следующий раз'}
+      </Toast>
+    </>
   )
 }
