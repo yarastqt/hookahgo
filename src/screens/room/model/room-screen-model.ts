@@ -1,4 +1,4 @@
-import { RouteParamsAndQuery, chainRoute } from 'atomic-router'
+import { RouteParamsAndQuery, chainRoute, redirect } from 'atomic-router'
 import { attach, createEffect, createEvent, createStore, sample, scopeBind } from 'effector'
 
 import {
@@ -16,7 +16,7 @@ const $subscribeRef = createStore<Unsubscribe | null>(null)
 const $room = createStore<Room | null>(null)
 const $isToastOpen = createStore(false)
 
-const roomUpdated = createEvent<Room>()
+const roomUpdated = createEvent<Room | null>()
 const acceptPressed = createEvent()
 const rejectPressed = createEvent()
 const closeToastPressed = createEvent()
@@ -47,6 +47,14 @@ export const roomScreenLoadedRoute = chainRoute({
 sample({
   clock: subscribeToRoomFx.doneData,
   target: $subscribeRef,
+})
+
+redirect({
+  clock: sample({
+    clock: roomUpdated,
+    filter: (room) => room === null,
+  }),
+  route: routes.notFound,
 })
 
 sample({

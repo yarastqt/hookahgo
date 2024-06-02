@@ -9,7 +9,7 @@ import { type Room, type RoomDocument, type RoomId } from './types'
 
 export function subscribeToRoom(payload: {
   params: { roomId: RoomId }
-  onData: (room: Room) => void
+  onData: (room: Room | null) => void
 }) {
   const firestore = scope.getState(firebaseModel.$firestore)
 
@@ -20,6 +20,10 @@ export function subscribeToRoom(payload: {
   return onSnapshot(roomRef, (roomDocument) => {
     const room = roomDocument.data() as RoomDocument
 
-    payload.onData({ ...room, id: roomRef.id })
+    if (!room) {
+      payload.onData(null)
+    } else {
+      payload.onData({ ...room, id: roomRef.id })
+    }
   })
 }
