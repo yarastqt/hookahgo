@@ -1,4 +1,5 @@
 import { createRoutesView } from 'atomic-router-react'
+
 import { MainLayout } from '@app/layouts/main-layout'
 
 import { MainScreen } from './main'

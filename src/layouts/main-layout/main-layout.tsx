@@ -1,8 +1,8 @@
 import { FC, ReactNode } from 'react'
 
+import styles from './main-layout.module.css'
 import { Logo } from './ui/logo'
 import { Topology } from './ui/topology'
-import styles from './main-layout.module.css'
 
 export interface MainLayoutProps {
   children: ReactNode

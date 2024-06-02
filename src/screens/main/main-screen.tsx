@@ -1,12 +1,12 @@
-import { FC } from 'react'
 import { useUnit } from 'effector-react'
+import { FC } from 'react'
 
 import { Button, FadeIn, Overflow } from '@app/shared/ui'
 
-import { Toast } from './ui/toast'
+import styles from './main-screen.module.css'
 import { mainScreenModel } from './model'
 import { Highlights } from './ui/highlights'
-import styles from './main-screen.module.css'
+import { Toast } from './ui/toast'
 
 export const MainScreen: FC = () => {
   const { isRoomCreating, onCreateRoomPress } = useUnit({

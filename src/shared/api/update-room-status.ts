@@ -1,11 +1,11 @@
-import { updateDoc, doc } from 'firebase/firestore'
+import { doc, updateDoc } from 'firebase/firestore'
 import invariant from 'ts-invariant'
 
 import { scope } from '@app/shared/config'
 import { firebaseModel } from '@app/shared/firebase'
 
 import { Table } from './tables'
-import { type RoomPayload, RoomStatus, type RoomId } from './types'
+import { type RoomId, type RoomPayload, RoomStatus } from './types'
 
 export interface UpdateRoomStatusParams {
   roomId: RoomId

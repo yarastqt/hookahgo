@@ -1,4 +1,4 @@
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import invariant from 'ts-invariant'
 
 import { scope } from '@app/shared/config'

@@ -1,11 +1,11 @@
-import { onSnapshot, doc } from 'firebase/firestore'
+import { doc, onSnapshot } from 'firebase/firestore'
 import invariant from 'ts-invariant'
 
 import { scope } from '@app/shared/config'
 import { firebaseModel } from '@app/shared/firebase'
 
 import { Table } from './tables'
-import { type RoomId, type Room, type RoomDocument } from './types'
+import { type Room, type RoomDocument, type RoomId } from './types'
 
 export function subscribeToRoom(payload: {
   params: { roomId: RoomId }

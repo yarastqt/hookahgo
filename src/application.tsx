@@ -1,13 +1,14 @@
-import './application/global.css'
-import { createRoot } from 'react-dom/client'
 import { RouterProvider } from 'atomic-router-react'
 import { allSettled } from 'effector'
 import { Provider } from 'effector-react'
+import { createRoot } from 'react-dom/client'
 
 import { Screens } from '@app/screens'
-import { router, history } from '@app/shared/router'
 import { appStarted, scope } from '@app/shared/config'
 import '@app/shared/firebase'
+import { history, router } from '@app/shared/router'
+
+import './application/global.css'
 
 async function render() {
   allSettled(appStarted, { scope: scope })
