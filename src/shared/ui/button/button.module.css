@@ -66,6 +66,6 @@
 }
 
 .root_isInactive {
-  color: var(--color-muted-text);
-  background-color: var(--color-muted-bg);
+  color: var(--color-muted-text-on);
+  background-color: var(--color-muted-bg-base);
 }

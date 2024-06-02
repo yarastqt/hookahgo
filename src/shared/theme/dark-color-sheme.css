@@ -1,40 +1,27 @@
 [data-color-scheme='dark'] {
   --color-surface-elevated-0: #060508;
+
   --color-text-primary: #f8f6e2;
   --color-text-secondary: rgba(248, 246, 226, 0.6);
+
+  --color-default-text-on: #060508;
+  --color-default-bg-base: #f8f6e2;
 
   --color-brand-text-on: #060508;
   --color-brand-bg-base: #f4c644;
   --color-brand-bg-hovered: #f2b91d;
   --color-brand-bg-pressed: #e6ac0d;
 
-  --color-muted-bg: #2d3239;
-  --color-muted-text: #8d939d;
-
-  --color-brand-border: #f4c644;
-  --color-brand-border-soft: rgba(244, 198, 68, 0.25);
-
-  --color-default-text-on: #060508;
-  --color-default-bg-base: #f8f6e2;
-
-  --color-accent-border: rgba(132, 255, 203, 1);
-  --color-text-accent: rgba(132, 255, 203, 1);
-
-  /* --color-brand-bg-hovered: rgba(237, 237, 242, 1);
-  --color-brand-bg-pressed: rgba(225, 225, 229, 1); */
-  --color-accent: rgba(132, 255, 203, 1);
-
-  --color-positive-bg-hovered: rgba(132, 255, 203, 0.1);
-  --color-positive-bg-pressed: rgba(132, 255, 203, 0.15);
-
-  --color-line-secondary: rgba(124, 124, 111, 0.1);
-
-  /* TODO: text? */
   --color-negative-text-on: #fffce1;
   --color-negative-border: rgb(6, 6, 6);
+  --color-negative-border-soft: rgba(255, 51, 91, 0.25);
   --color-negative-bg-base: #ff335b;
   --color-negative-bg-hovered: #ff1847;
   --color-negative-bg-pressed: #fd0033;
 
-  --color-negative-border-soft: rgba(255, 51, 91, 0.25);
+  --color-muted-bg-base: #2d3239;
+  --color-muted-text-on: #8d939d;
+
+  --color-brand-border: #f4c644;
+  --color-brand-border-soft: rgba(244, 198, 68, 0.25);
 }
